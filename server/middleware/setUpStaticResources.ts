@@ -34,6 +34,13 @@ export default function setUpStaticResources(): Router {
     router.use('/assets/js/jquery.min.js', express.static(path.join(process.cwd(), dir), cacheControl))
   })
 
+  router.use(
+    '/assets/dpr',
+    express.static(
+      path.join(process.cwd(), '/node_modules/@ministryofjustice/hmpps-digital-prison-reporting-frontend/dpr/assets'),
+    ),
+  )
+
   // Don't cache dynamic resources
   router.use(noCache())
 

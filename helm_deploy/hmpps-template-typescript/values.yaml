@@ -1,19 +1,19 @@
 ---
 generic-service:
-  nameOverride: hmpps-template-typescript
+  nameOverride: hmpps-dpr-fake-dps-service-ui
   productId: "UNASSIGNED"   # productId for the product that this belongs too, i.e. DPS001, see README.md for details
 
-  replicaCount: 4
+  replicaCount: 2
 
   image:
-    repository: quay.io/hmpps/hmpps-template-typescript
+    repository: quay.io/hmpps/hmpps-dpr-fake-dps-service-ui
     tag: app_version    # override at deployment time
     port: 3000
 
   ingress:
     enabled: true
-    host: app-hostname.local    # override per environment
-    tlsSecretName: hmpps-template-typescript-cert
+    host: hmpps-dpr-fake-dps-service-ui.hmpps.service.justice.gov.uk
+    tlsSecretName: hmpps-dpr-fake-dps-service-cert
 
   livenessProbe:
     httpGet:
@@ -42,16 +42,18 @@ generic-service:
   #     [name of environment variable as seen by app]: [key of kubernetes secret to load]
 
   namespace_secrets:
-    hmpps-template-typescript:
+    hmpps-dpr-fake-dps-service-ui:
       APPINSIGHTS_INSTRUMENTATIONKEY: "APPINSIGHTS_INSTRUMENTATIONKEY"
-      API_CLIENT_ID: "API_CLIENT_ID"
-      API_CLIENT_SECRET: "API_CLIENT_SECRET"
-      SYSTEM_CLIENT_ID: "SYSTEM_CLIENT_ID"
-      SYSTEM_CLIENT_SECRET: "SYSTEM_CLIENT_SECRET"
-      SESSION_SECRET: "SESSION_SECRET"
-    elasticache-redis:
+    hmpps-dpr-fake-dps-service-ui-ec-cluster-output:
       REDIS_HOST: "primary_endpoint_address"
       REDIS_AUTH_TOKEN: "auth_token"
+    ui-session-secret:
+      SESSION_SECRET: "session_secret"
+    hmpps-auth:
+      API_CLIENT_ID: "api_client_id"
+      API_CLIENT_SECRET: "api_client_secret"
+      SYSTEM_CLIENT_ID: "system_client_id"
+      SYSTEM_CLIENT_SECRET: "system_client_secret"
 
   allowlist:
     office: "217.33.148.210/32"
@@ -64,4 +66,4 @@ generic-service:
     cloudplatform-live-3: "35.177.252.54/32"
 
 generic-prometheus-alerts:
-  targetApplication: hmpps-template-typescript
+  targetApplication: hmpps-dpr-fake-dps-service-ui
