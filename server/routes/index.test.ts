@@ -18,7 +18,7 @@ describe('GET /', () => {
       .get('/')
       .expect('Content-Type', /html/)
       .expect(res => {
-        expect(res.text).toContain('HMPPS Typescript Template')
+        expect(res.text).toContain('DPR Fake DPS Service')
       })
   })
 })
