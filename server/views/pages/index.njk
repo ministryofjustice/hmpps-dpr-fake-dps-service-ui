@@ -1,3 +1,5 @@
+{% from "dpr/components/card-group/view.njk" import dprCardGroup %}
+
 {% extends "../partials/layout.njk" %}
 
 {% set pageTitle = applicationName + " - Home" %}
@@ -5,7 +7,17 @@
 
 {% block content %}
 
-  <h1>This site is under construction...</h1>
-  <p>Please check back later when there is content to view.</p>
+  {{ dprCardGroup([
+    {
+      text: 'List',
+      href: '/list',
+      description: 'View the full list of Fake Prisoner Preferences.'
+    },
+    {
+      text: 'Add',
+      href: '/add',
+      description: 'Add Fake Prisoner Preferences.'
+    }
+  ]) }}
 
 {% endblock %}
