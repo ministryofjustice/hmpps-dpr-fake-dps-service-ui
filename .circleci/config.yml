@@ -133,6 +133,7 @@ workflows:
       - hmpps/deploy_env:
           name: deploy_dev
           jira_update: true
+          release_name: PROJECT_NAME_ENV_NAME
           context:
             - hmpps-common-vars
             - hmpps-dpr-fake-dps-service
