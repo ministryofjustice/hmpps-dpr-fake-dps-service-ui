@@ -121,7 +121,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/bunyan": "^1.8.9",
+    "@types/bunyan": "^1.8.11",
     "@types/bunyan-format": "^0.2.6",
     "@types/compression": "^1.7.3",
     "@types/connect-flash": "0.0.38",
