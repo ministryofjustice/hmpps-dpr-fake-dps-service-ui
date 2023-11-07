@@ -30,7 +30,7 @@ export const user: Express.User = {
 
 export const flashProvider = jest.fn()
 
-function appSetup(services: Services, production: boolean, userSupplier: () => Express.User): Express {
+function appSetup(production: boolean, userSupplier: () => Express.User): Express {
   const app = express()
 
   app.set('view engine', 'njk')
@@ -47,7 +47,7 @@ function appSetup(services: Services, production: boolean, userSupplier: () => E
   })
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
-  app.use(routes(services))
+  app.use(routes())
   app.use((req, res, next) => next(new NotFound()))
   app.use(errorHandler(production))
 
@@ -56,7 +56,6 @@ function appSetup(services: Services, production: boolean, userSupplier: () => E
 
 export function appWithAllRoutes({
   production = false,
-  services = {},
   userSupplier = () => user,
 }: {
   production?: boolean
@@ -64,5 +63,5 @@ export function appWithAllRoutes({
   userSupplier?: () => Express.User
 }): Express {
   auth.default.authenticationMiddleware = () => (req, res, next) => next()
-  return appSetup(services as Services, production, userSupplier)
+  return appSetup(production, userSupplier)
 }
