@@ -38,6 +38,7 @@ generic-service:
     HMPPS_AUTH_URL: https://sign-in-dev.hmpps.service.justice.gov.uk/auth
     TOKEN_VERIFICATION_API_URL: https://token-verification-api-dev.prison.service.justice.gov.uk
     INGRESS_URL: https://hmpps-dpr-fake-dps-service-ui.hmpps.service.justice.gov.uk
+    API_URL: https://hmpps-dpr-fake-dps-service.hmpps.service.justice.gov.uk
 
   # Pre-existing kubernetes secrets to load as environment variables in the deployment.
   # namespace_secrets:
