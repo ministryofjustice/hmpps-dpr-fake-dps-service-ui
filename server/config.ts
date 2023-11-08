@@ -72,6 +72,7 @@ export default {
     },
     report: {
       url: get('API_URL', 'https://hmpps-dpr-fake-dps-service.hmpps.service.justice.gov.uk', requiredInProduction),
+      timeout: Number(get('API_TIMEOUT', 10000)),
     },
   },
   domain: get('INGRESS_URL', 'http://localhost:3000', requiredInProduction),
