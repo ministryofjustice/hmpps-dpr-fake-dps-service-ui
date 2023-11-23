@@ -1,13 +1,12 @@
----
 generic-service:
   nameOverride: hmpps-dpr-fake-dps-service-ui
-  productId: "UNASSIGNED"   # productId for the product that this belongs too, i.e. DPS001, see README.md for details
+  productId: "UNASSIGNED" # productId for the product that this belongs too, i.e. DPS001, see README.md for details
 
   replicaCount: 2
 
   image:
     repository: quay.io/hmpps/hmpps-dpr-fake-dps-service-ui
-    tag: app_version    # override at deployment time
+    tag: app_version # override at deployment time
     port: 3000
 
   ingress:
@@ -60,14 +59,8 @@ generic-service:
       SYSTEM_CLIENT_SECRET: "system_client_secret"
 
   allowlist:
-    office: "217.33.148.210/32"
-    health-kick: "35.177.252.195/32"
-    petty-france-wifi: "213.121.161.112/28"
-    global-protect: "35.176.93.186/32"
-    mojvpn: "81.134.202.29/32"
-    cloudplatform-live-1: "35.178.209.113/32"
-    cloudplatform-live-2: "3.8.51.207/32"
-    cloudplatform-live-3: "35.177.252.54/32"
+    groups:
+      - internal
 
 generic-prometheus-alerts:
   targetApplication: hmpps-dpr-fake-dps-service-ui
