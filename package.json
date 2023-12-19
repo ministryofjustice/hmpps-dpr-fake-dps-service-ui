@@ -129,7 +129,7 @@
     "@types/csurf": "^1.11.3",
     "@types/express-session": "^1.17.8",
     "@types/http-errors": "^2.0.2",
-    "@types/jest": "^29.5.5",
+    "@types/jest": "^29.5.11",
     "@types/jsonwebtoken": "^9.0.4",
     "@types/node": "^20.10.5",
     "@types/nunjucks": "^3.2.6",
